@@ -13,7 +13,8 @@ public:
         return -1;
     }
 
-int insert(int a[],int add,int n,int c)
+    
+    int insert(int a[],int add,int n,int c)
     {
       if(n>=c)
       {
@@ -23,7 +24,6 @@ int insert(int a[],int add,int n,int c)
     
     return(n+1);
   }
-
 
 
     int delet(int a[],int n,int del)
@@ -42,4 +42,3 @@ int insert(int a[],int add,int n,int c)
 		return n-1;
 	}
 };
-
