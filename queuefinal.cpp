@@ -25,6 +25,7 @@ class Queue{
 			return false;
 		}
 	}
+ 
 	bool isFull()
 	{
 		if (rear == maxsize - 1)
@@ -36,6 +37,7 @@ class Queue{
 			return false;
 		}
 	}
+ 
 	
 	
 	int enqueue(int a)
@@ -53,6 +55,7 @@ class Queue{
 		}
 		arr[rear]=a;
 	}
+ 
 	int dequeue()
 	{
 		if (isEmpty())
@@ -81,6 +84,7 @@ class Queue{
 			return arr[front];
 		}
 	}
+ 
 	
 	Queue reverseQueue()
 	{
