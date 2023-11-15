@@ -12,6 +12,7 @@ public:
         }
         return -1;
     }
+
     
     int insert(int a[],int add,int n,int c)
     {
@@ -23,6 +24,7 @@ public:
     
     return(n+1);
   }
+
 
     int delet(int a[],int n,int del)
     {
