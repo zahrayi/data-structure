@@ -30,5 +30,28 @@ class stack1{
 			}
 		
 		}
+		int pop()
+    {
+      if(isempty())
+      {
+        return -1;
+      }
+      else
+      {
+        x=arr[top--];
+        return x;
+      }
+    }
+    int peek()
+    {
+      if(isempty())
+      {
+        return -1;
+      }
+      else
+      {
+        return arr[top];
+      }
+    }
 	
 };
