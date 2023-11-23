@@ -29,6 +29,7 @@ public:
         
     }
 
+
     bool isEmpty() {
       if(top1 == -1 && top2 == -1)
       {
@@ -39,6 +40,7 @@ public:
           return false;
     }
     }
+
 
     void enqueue(int x) {
         if (isFull()) {
@@ -71,6 +73,7 @@ public:
             return value;
         }
     }
+
      int peek() {
         if (top1 == -1 && top2 == -1) {
             
@@ -90,6 +93,7 @@ public:
             return stack2[top2];
         }
     }
+
 
     
 };
