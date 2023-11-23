@@ -8,8 +8,8 @@ class Queue {
 private:
     int stack1[maxsize];
     int stack2[maxsize];
-    int top1; // top for stack1
-    int top2; // top for stack2
+    int top1; 
+    int top2; 
 
 public:
     Queue() {
