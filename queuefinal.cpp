@@ -25,6 +25,19 @@ class Queue{
 			return false;
 		}
 	}
+ 
+	bool isFull()
+	{
+		if (rear == maxsize - 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+ 
 	
 	
 	int enqueue(int a)
@@ -42,7 +55,36 @@ class Queue{
 		}
 		arr[rear]=a;
 	}
-	
+ 
+	int dequeue()
+	{
+		if (isEmpty())
+		{
+			return -1;
+		}
+		else if (front == rear)
+		{
+			int temp = arr[front];
+			front = rear = -1;
+			return temp;
+		}
+		else{
+			int temp = arr[front];
+			front++;
+			return temp;
+		}
+	}
+	int peek()
+	{
+		if (isEmpty())
+		{
+			return -1;
+		}
+		else{
+			return arr[front];
+		}
+	}
+ 
 	
 	Queue reverseQueue()
 	{

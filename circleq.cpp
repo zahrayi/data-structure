@@ -60,6 +60,31 @@ public:
     }
   }
 }
+int peek()
+  {
+    int element;
+    if (isEmpty()) {
+      return (-1);
+    }
+    else
+    {
+      element = items[front];
+    }
+    return element;
 
+  }
+
+  void reverse() {
+    int i, j;
+    while (front != rear) {
+      i = front;
+      j = rear;
+      Int temp=items[i];
+items[i]=items[j];
+items [j]=temp;
+      front = (front + 1) % SIZE;
+      rear = (rear - 1 + SIZE) % SIZE;
+    }
+  }
 
 };

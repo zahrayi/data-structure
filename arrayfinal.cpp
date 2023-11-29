@@ -13,6 +13,19 @@ public:
         return -1;
     }
 
+    
+    int insert(int a[],int add,int n,int c)
+    {
+      if(n>=c)
+      {
+        return n;
+    }
+    a[n]=add;
+    
+    return(n+1);
+  }
+
+
     int delet(int a[],int n,int del)
     {
     	int p;
@@ -29,4 +42,3 @@ public:
 		return n-1;
 	}
 };
-
