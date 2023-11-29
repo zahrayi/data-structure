@@ -1,80 +1,38 @@
 #include<iostream>
-#include<string>
+#include <stack>
 using namespace std;
 
-const int maxsize = 5;
-
-class Queue {
+class QueueWithTwoStacks {
 private:
-    int stack1[maxsize];
-    int stack2[maxsize];
-    int top1; // top for stack1
-    int top2; // top for stack2
+    stack<int> enqueueStack;  // Stack for enqueue operation
+    stack<int> dequeueStack; // Stack for dequeue operation
 
 public:
-    Queue() {
-        top1 = -1;
-        top2 = -1;
-    }
-
-    bool isFull() {
-    	if(top1 == maxsize - 1)
-    	{
-    		return true;
-		}
-        else
-        {
-        	return false;
-		}
-        
-    }
-
-    void enqueue(int x) {
-        if (isFull()) {
-            return;
-        }
-        else {
-            top1++;
-            stack1[top1] = x;
-        }
+    void enqueue(int value) {
+        enqueueStack.push(value);
     }
 
     int dequeue() {
-        if (top1 == -1 && top2 == -1) {
-            
+        if (dequeueStack.empty()) {
+            while (!enqueueStack.empty()) {
+                dequeueStack.push(enqueueStack.top());
+                enqueueStack.pop();
+            }
+        }
+
+        if (dequeueStack.empty()) {
             return -1;
         }
-        else {
-            if (top2 == -1) {
-                while (top1 != -1) {
-                    int temp = stack1[top1];
-                    top1--;
-                    top2++;
-                    stack2[top2] = temp;
-                }
-            }
 
-            int value = stack2[top2];
-            top2--;
+        int frontElement = dequeueStack.top();
+        dequeueStack.pop();
 
-            return value;
-        }
+        return frontElement;
     }
 
-    
+    bool isEmpty() {
+        return enqueueStack.empty() && dequeueStack.empty();
+    }
 };
 
-int main() {
-    Queue q;
-    q.enqueue(10);
-    q.enqueue(20);
-    q.enqueue(30);
-    q.enqueue(40);
 
-    cout << q.peek() << endl;
-
-    q.dequeue();
-    cout << q.peek() << endl;
-
-    return 0;
-}
