@@ -12,7 +12,7 @@ class LinkedList {
 
 public:
     LinkedList() : head(NULL), size(0) {}
-
+//insert
     void InsertAtIndex(int data, int index) {
         Node* newNode = new Node();
         newNode->data = data;
@@ -47,7 +47,7 @@ public:
         }
         temp->data = data;
     }
-
+//remove
     int RemoveNodeAtIndex(int index) {
         Node* temp = head;
         if (index == 0) {
