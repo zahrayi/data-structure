@@ -85,3 +85,48 @@ public:
         size--;
         return data;
     }
+    
+     int RemoveNodeAtEnd() {
+        return RemoveNodeAtIndex(size - 1);
+    }
+
+    int RemoveNodeAtBegin() {
+        return RemoveNodeAtIndex(0);
+    }
+
+    int SizeOfList() {
+        return size;
+    }
+
+    void Concatenate(DoublyLinkedList* list) {
+    if (list->head != NULL) {
+        if (head == NULL) {
+            head = list->head;
+        } else {
+            tail->next = list->head;
+            list->head->prev = tail;
+        }
+
+        tail = list->tail;
+        size += list->size;
+    }
+}
+
+
+    void Invert() {
+        Node* temp = head;
+        Node* nextNode;
+        while (temp != NULL) {
+            nextNode = temp->next;
+            temp->next = temp->prev;
+            temp->prev = nextNode;
+            if (nextNode == NULL) {
+                tail = head;
+                head = temp;
+            }
+            temp = nextNode;
+        }
+    }
+   
+};
+
