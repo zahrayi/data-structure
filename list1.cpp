@@ -76,4 +76,38 @@ public:
 
     int RemoveNodeAtBegin() {
         return RemoveNodeAtIndex(0);
+
+    int sizeoflist() {
+        int count = 0;
+        Node* current = head;
+        while (current != nullptr) {
+            count++;
+            current = current->next;
+        }
+        return count;
     }
+
+    void Concatenate(LinkedList* list) {
+        Node* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = list->head;
+        size += list->size;
+    }
+
+    void Invert() {
+        Node* current = head;
+        Node* prev = NULL;
+        Node* next = NULL;
+        while (current != NULL) {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+   
+};
+
