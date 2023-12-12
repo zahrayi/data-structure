@@ -76,10 +76,6 @@ public:
 
     int RemoveNodeAtBegin() {
         return RemoveNodeAtIndex(0);
-    }
-    int RemoveNodeAtBegin() {
-        return RemoveNodeAtIndex(0);
-    }
 
     int sizeoflist() {
         int count = 0;
@@ -114,3 +110,4 @@ public:
     }
    
 };
+
