@@ -8,10 +8,7 @@ class Array
     
   public:
  
-void Display()
-{
-  l.Display();
-}
+
 void Add(int value)
 {
   l.InsertAtEnd(value);
