@@ -21,11 +21,25 @@ public:
         }
     }
 
-    int Peek() {
-        if (!isempty()) {
-            return l.head->data;
-        }
+    
+  
+
+    void Reverse() {
+        l.Invert();
     }
+
+    bool isempty() {
+        return l.sizeoflist() == 0;
+    }
+
+    bool isfull() {
+        return l.sizeoflist() == max_size;
+    }
+
+    void Display() {
+        l.Display();
+    }
+
  void Reverse() {
         l.Invert();
     }
@@ -36,4 +50,7 @@ public:
 
     bool isfull() {
         return l.sizeoflist() == max_size;
-    };
+    }
+
+};
+
