@@ -8,6 +8,10 @@ class Array
     
   public:
 
+
+ 
+
+
 void Add(int value)
 {
   l.InsertAtEnd(value);
@@ -27,4 +31,7 @@ int Delete(int value)
   return  l.RemoveNodeAtIndex(value);
 }
 
+
 };
+
+

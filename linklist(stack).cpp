@@ -1,9 +1,12 @@
 #include<iostream>
 using namespace std;
 #include "list1.cpp"
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> f97d940a46da53359ec75ba3c553346617e942d2
 class stacklink{
   private:
     LinkedList l;
@@ -21,6 +24,7 @@ class stacklink{
       {
        return l.RemoveNodeAtBegin();
    }
+<<<<<<< HEAD
    
    
     void push(int item)
@@ -30,3 +34,6 @@ class stacklink{
       
       
 };
+=======
+}
+>>>>>>> f97d940a46da53359ec75ba3c553346617e942d2

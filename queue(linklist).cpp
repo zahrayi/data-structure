@@ -21,11 +21,8 @@ public:
         }
     }
 
-    int Peek() {
-        if (!isempty()) {
-            return l.head->data;
-        }
-    }
+    
+  
 
     void Reverse() {
         l.Invert();
