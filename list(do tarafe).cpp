@@ -46,6 +46,15 @@ public:
         }
         size++;
     }
+    
+    
+    void UpdateNode(int data, int index) {
+        Node* temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp->next;
+        }
+        temp->data = data;
+    }
 
     void InsertAtEnd(int data) {
         InsertAtIndex(data, size);
@@ -55,13 +64,7 @@ public:
         InsertAtIndex(data, 0);
     }
 
-    void UpdateNode(int data, int index) {
-        Node* temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp->next;
-        }
-        temp->data = data;
-    }
+    
 
     int RemoveNodeAtIndex(int index) {
         Node* temp = head;
@@ -86,6 +89,14 @@ public:
         return data;
     }
     
+    
+    
+    int SizeOfList() {
+        return size;
+    }
+    
+    
+    
      int RemoveNodeAtEnd() {
         return RemoveNodeAtIndex(size - 1);
     }
@@ -94,9 +105,7 @@ public:
         return RemoveNodeAtIndex(0);
     }
 
-    int SizeOfList() {
-        return size;
-    }
+    
 
     void Concatenate(DoublyLinkedList* list) {
     if (list->head != NULL) {
