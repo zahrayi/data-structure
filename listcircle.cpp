@@ -41,12 +41,14 @@ public:
         size++;
     }
 
-    void InsertAtEnd(int data) {
-        InsertAtIndex(data, size);
-    }
+    
 
     void InsertAtBegin(int data) {
         InsertAtIndex(data, 0);
+    }
+    
+    void InsertAtEnd(int data) {
+        InsertAtIndex(data, size);
     }
 
     void UpdateNode(int data, int index) {
@@ -100,6 +102,23 @@ int RemoveNodeAtIndex(int index) {
         return size;
     }
 
+    
+    }
+
+    void Invert() {
+        Node* prev = head;
+        Node* current = head->next;
+        Node* next;
+        while (current != head) {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+        next->next = prev;
+        head = prev;
+    }
+    
     void Concatenate(CircularLinkedList* list) {
         if (head == NULL) {
             head = list->head;
@@ -116,21 +135,6 @@ int RemoveNodeAtIndex(int index) {
             temp2->next = head;
         }
         size += list->size;
-    }
-
-    void Invert() {
-        Node* prev = head;
-        Node* current = head->next;
-        Node* next;
-        while (current != head) {
-            next = current->next;
-            current->next = prev;
-            prev = current;
-            current = next;
-        }
-        next->next = prev;
-        head = prev;
-    }
     
 
 };
