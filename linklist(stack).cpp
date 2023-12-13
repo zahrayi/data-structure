@@ -22,6 +22,7 @@ class stacklink{
        return l.RemoveNodeAtBegin();
    }
    
+   
     void push(int item)
       {
           l.InsertABegin(item);
