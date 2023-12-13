@@ -1,6 +1,12 @@
 #include<iostream>
 using namespace std;
 #include "list1.cpp"
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> f97d940a46da53359ec75ba3c553346617e942d2
 class stacklink{
   private:
     LinkedList l;
@@ -12,12 +18,22 @@ class stacklink{
         else
         return false;
       }
-      void push(int item)
-      {
-          l.InsertABegin(item);
-      }
+      
+     
       void pop()
       {
        return l.RemoveNodeAtBegin();
    }
+<<<<<<< HEAD
+   
+   
+    void push(int item)
+      {
+          l.InsertABegin(item);
+      }
+      
+      
+};
+=======
 }
+>>>>>>> f97d940a46da53359ec75ba3c553346617e942d2
