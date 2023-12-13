@@ -1,5 +1,9 @@
 #include<iostream>
 using namespace std;
+#include "list1.cpp"
+
+
+
 class stacklink{
   private:
     LinkedList l;
@@ -11,12 +15,17 @@ class stacklink{
         else
         return false;
       }
-      void push(int item)
-      {
-          l.InsertABegin(item);
-      }
+      
+     
       void pop()
       {
        return l.RemoveNodeAtBegin();
    }
-}
+   
+    void push(int item)
+      {
+          l.InsertABegin(item);
+      }
+      
+      
+};
