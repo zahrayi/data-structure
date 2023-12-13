@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+#include "list1.cpp"
 class stacklink{
   private:
     LinkedList l;
