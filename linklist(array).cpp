@@ -7,21 +7,24 @@ class Array
     LinkedList l;
     
   public:
- 
-void Display()
-{
-  l.Display();
-}
+
 void Add(int value)
 {
   l.InsertAtEnd(value);
 }
+
+
+
 void Insert(int index, int value)
 {
   l.InsertAtIndex(value , index);
 }
+
+
+
 int Delete(int value)
 {
   return  l.RemoveNodeAtIndex(value);
 }
-}
+
+};
