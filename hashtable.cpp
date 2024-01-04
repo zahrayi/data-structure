@@ -57,3 +57,37 @@ public:
         HT[index]->value = rec.value;
         currentSize++;
     }
+    int search(int key)
+    {
+        int h = hashfunc(key);
+        int index = h;
+
+        while (HT[index] != nullptr)
+        {
+            if (HT[index]->key == key)
+                return index;
+
+            index = linearProbe(key, index);
+        }
+
+        return -1;
+    }
+
+    int remove(int key)
+    {
+        int h = hashfunc(key);
+        int index = h;
+
+        while (HT[index] != nullptr)
+        {
+            if (HT[index]->key == key)
+            {
+                int removedValue = HT[index]->value;
+                HT[index]->key = -1; // نشانگر خانه‌ای خالی
+                HT[index]->value = -1;
+                currentSize--;
+                return removedValue;
+            }
+
+            index = linearProbe(key, index);
+        };
