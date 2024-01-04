@@ -105,3 +105,131 @@ private:
         if (v != nullptr)
             v->parent = u->parent;
     }
+    void deleteFixup(Node* x) {
+        while (x != root && x->color == BLACK) {
+            if (x == x->parent->left) {
+                Node* w = x->parent->right;
+                if (w->color == RED) {
+                    w->color = BLACK;
+                    x->parent->color = RED;
+                    leftRotate(x->parent);
+                    w = x->parent->right;
+                }
+                if (w->left->color == BLACK && w->right->color == BLACK) {
+                    w->color = RED;
+                    x = x->parent;
+                } else {
+                    if (w->right->color == BLACK) {
+                        w->left->color = BLACK;
+                        w->color = RED;
+                        rightRotate(w);
+                        w = x->parent->right;
+                    }
+                    w->color = x->parent->color;
+                    x->parent->color = BLACK;
+                    w->right->color = BLACK;
+                    leftRotate(x->parent);
+                    x = root;
+                }
+            } else {
+                Node* w = x->parent->left;
+                if (w->color == RED) {
+                    w->color = BLACK;
+                    x->parent->color = RED;
+                    rightRotate(x->parent);
+                    w = x->parent->left;
+                }
+                if (w->right->color == BLACK && w->left->color == BLACK) {
+                    w->color = RED;
+                    x = x->parent;
+                } else {
+                    if (w->left->color == BLACK) {
+                        w->right->color = BLACK;
+                        w->color = RED;
+                        leftRotate(w);
+                        w = x->parent->left;
+                    }
+                    w->color = x->parent->color;
+                    x->parent->color = BLACK;
+                    w->left->color = BLACK;
+                    rightRotate(x->parent);
+                    x = root;
+                }
+            }
+        }
+        x->color = BLACK;
+    }
+
+    Node* minimum(Node* x) {
+        while (x->left != nullptr)
+            x = x->left;
+        return x;
+    }
+
+public:
+    RedBlackTree() : root(nullptr) {}
+
+    void Insert(int value) {
+        Node* z = new Node(value);
+        Node* y = nullptr;
+        Node* x = root;
+
+        while (x != nullptr) {
+            y = x;
+            if (z->data < x->data)
+                x = x->left;
+            else
+                x = x->right;
+        }
+
+        z->parent = y;
+        if (y == nullptr)
+            root = z;
+        else if (z->data < y->data)
+            y->left = z;
+        else
+            y->right = z;
+
+        insertFixup(z);
+    }
+
+    void Remove(int value) {
+        Node* z = root;
+        while (z != nullptr) {
+            if (value < z->data)
+                z = z->left;
+            else if (value > z->data)
+                z = z->right;
+            else {
+                Node* y = z;
+                Color yOriginalColor = y->color;
+                Node* x;
+                if (z->left == nullptr) {
+                    x = z->right;
+                    transplant(z, z->right);
+                } else if (z->right == nullptr) {
+                    x = z->left;
+                    transplant(z, z->left);
+                } else {
+                    y = minimum(z->right);
+                    yOriginalColor = y->color;
+                    x = y->right;
+                    if (y->parent == z)
+                        x->parent = y;
+                    else {
+                        transplant(y, y->right);
+                        y->right = z->right;
+                        y->right->parent = y;
+                    }
+                    transplant(z, y);
+                    y->left = z->left;
+                    y->left->parent = y;
+                    y->color = z->color;
+                }
+                delete z;
+                if (yOriginalColor == BLACK)
+                    deleteFixup(x);
+                return;
+            }
+        }
+    };
