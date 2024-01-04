@@ -44,3 +44,30 @@ void insertionSort(Node* head) {
 
     head = sorted;
 }
+void concatenateBuckets(Node* buckets[], int numBuckets, float arr[], int n) {
+    int index = 0;
+    for (int i = 0; i < numBuckets; i++) {
+        Node* current = buckets[i];
+        while (current != nullptr) {
+            arr[index++] = current->data;
+            current = current->next;
+        }
+    }
+}
+
+// Bucket sort 
+void bucketSort(float arr[], int n) {
+    const int numBuckets = 10;
+    Node* buckets[numBuckets] = {nullptr};
+
+    for (int i = 0; i < n; i++) {
+        int bucketIndex = numBuckets * arr[i];
+        insertNode(buckets[bucketIndex], arr[i]);
+    }
+
+    for (int i = 0; i < numBuckets; i++) {
+        insertionSort(buckets[i]);
+    }
+
+    concatenateBuckets(buckets, numBuckets, arr, n);
+};
