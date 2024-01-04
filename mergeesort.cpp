@@ -35,6 +35,14 @@ void merge(int arr[], int p, int q, int r) {
         k++;
     }
 }
+void mergeSort(int arr[], int p, int r) {
+    if (p < r) {
+        int q = (p + r) / 2;
+        mergeSort(arr, p, q);
+        mergeSort(arr, q + 1, r);
+        merge(arr, p, q, r);
+    }
+}
 
 
 
