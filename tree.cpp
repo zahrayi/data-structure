@@ -25,3 +25,20 @@ public:
             current->nextSibling = newNode;
         }
     }
+    void Remove(Node* parent, int value) {
+        Node* current = parent->firstChild;
+        Node* prev = nullptr;
+        while (current != nullptr) {
+            if (current->value == value) {
+                if (prev == nullptr) {
+                    parent->firstChild = current->nextSibling;
+                } else {
+                    prev->nextSibling = current->nextSibling;
+                }
+                delete current;
+                return;
+            }
+            prev = current;
+            current = current->nextSibling;
+        }
+    };
