@@ -74,3 +74,80 @@ private:
         }
         return current;
     }
+    bool searchNode(Node* currentNode, int value) {
+        if (currentNode == nullptr || currentNode->data == value) {
+            return currentNode != nullptr;
+        }
+
+        if (value < currentNode->data) {
+            return searchNode(currentNode->left, value);
+        }
+        else {
+            return searchNode(currentNode->right, value);
+        }
+    }
+
+    void preorderTraversal(Node* currentNode, string& result) {
+        if (currentNode != nullptr) {
+            result += to_string(currentNode->data) + " ";
+            preorderTraversal(currentNode->left, result);
+            preorderTraversal(currentNode->right, result);
+        }
+    }
+
+    void inorderTraversal(Node* currentNode, string& result) {
+        if (currentNode != nullptr) {
+            inorderTraversal(currentNode->left, result);
+            result += to_string(currentNode->data) + " ";
+            inorderTraversal(currentNode->right, result);
+        }
+    }
+
+    void postorderTraversal(Node* currentNode, string& result) {
+        if (currentNode != nullptr) {
+            postorderTraversal(currentNode->left, result);
+            postorderTraversal(currentNode->right, result);
+            result += to_string(currentNode->data) + " ";
+        }
+    }
+
+public:
+    BinaryTree() {
+        root = nullptr;
+    }
+
+    void insert(int value) {
+        if (root == nullptr) {
+            root = new Node(value);
+        }
+        else {
+            insertNode(root, value);
+        }
+    }
+
+    void remove(int value) {
+        root = removeNode(root, value);
+    }
+
+    bool search(int value) {
+        return searchNode(root, value);
+    }
+
+    string preorder() {
+        string result;
+        preorderTraversal(root, result);
+        return result;
+    }
+
+    string inorder() {
+        string result;
+        inorderTraversal(root, result);
+        return result;
+    }
+
+    string postorder() {
+        string result;
+        postorderTraversal(root, result);
+        return result;
+    }
+};
