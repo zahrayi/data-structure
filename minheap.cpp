@@ -33,11 +33,17 @@ void deleteRoot(int arr[], int& n)
     heapify(arr, n, 0);
 }
 
-void buildMinHeap(int arr[], int n)
+void insert(int arr[], int& n, int key)
 {
-    for (int i = (n / 2) - 1; i >= 0; i--) {
-        heapify(arr, n, i);
+    n = n + 1;
+    int i = n - 1;
+    arr[i] = key;
+
+    while (i != 0 && arr[(i - 1) / 2] > arr[i]) {
+        swap(&arr[i], &arr[(i - 1) / 2]);
+        i = (i - 1) / 2;
     }
 }
+
 
 
